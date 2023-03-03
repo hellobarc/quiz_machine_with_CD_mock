@@ -20,18 +20,47 @@
                         </div>
                       </div>
                 </div>
-                <div class="mock_reading_heading">
-                    <h2 class="fw-bolder">Reading Passage {{$segment_id}}</h2>
-                    @if($segment_id == 1)
-                        <p class="main-text">You should spend about 20 minutes on <strong>Questions 1 – 13,</strong>which are based on Reading Passage 1 below.</p>
-                    @elseif($segment_id == 2)
-                        <p class="main-text">You should spend about 20 minutes on <strong>Questions 14 – 26,</strong>which are based on Reading Passage 2 below.</p>
-                    @elseif($segment_id == 2)
-                        <p class="main-text">You should spend about 20 minutes on <strong>Questions 27 - 40,</strong>which are based on Reading Passage 3 below.</p>
-                    @else
-                        <p class="main-text">You should spend about 20 minutes which are based on Reading Passage below.</p>
-                    @endif
+                <div class="mock_reading_heading d-flex justify-content-between">
+                    <div>
+                        <h2 class="fw-bolder">Reading Passage {{$segment_id}}</h2>
+                        @if($segment_id == 1)
+                            <p class="main-text">You should spend about 20 minutes on <strong>Questions 1 – 13,</strong>which are based on Reading Passage 1 below.</p>
+                        @elseif($segment_id == 2)
+                            <p class="main-text">You should spend about 20 minutes on <strong>Questions 14 – 26,</strong>which are based on Reading Passage 2 below.</p>
+                        @elseif($segment_id == 2)
+                            <p class="main-text">You should spend about 20 minutes on <strong>Questions 27 - 40,</strong>which are based on Reading Passage 3 below.</p>
+                        @else
+                            <p class="main-text">You should spend about 20 minutes which are based on Reading Passage below.</p>
+                        @endif
+                    </div>
+                    <div>
+                        <a href="#" class="listening_warning mx-5" data-bs-toggle="modal" data-bs-target="#readingWarning"><i class="fa-solid fa-circle-exclamation"></i> Read it</a>
+                    </div>
                 </div>
+                <!-- reading Warning Modal -->
+                    <div class="modal fade" id="readingWarning" tabindex="-1" aria-labelledby="readingWarningLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 fw-bolder" id="readingWarningLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="fs-5">
+                                        <li>Read the questions and instructions properly.</li><br>
+                                        <li>After completing passage 1 Click the next button to go to the next passage. The next passage will not start automatically. As soon as you complete your passage click next.</li><br>
+                                        <li>When you click the next button questions will be submitted. You can not change your answer again.</li><br>
+                                        <li>Do not give extra space, comma before or after your answers.</li><br>
+                                        <li>Careful about uppercase and lowercase. In the IELTS exam answer is sensitive. So write your answer proper way.</li>
+                                    </ul>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                
                     <div class="mock_reading_passage" id="passage_width">
                         <div class="passage" >

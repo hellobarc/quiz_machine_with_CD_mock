@@ -669,6 +669,14 @@ class MockModuleController extends Controller
                                 'q_head'=>  $mockHeadingMatchSubQuesHeading, 
                                 'question'=>$mockHeadingMatchSubQues
                             ];
+                    }elseif($question_type == 'true-of-nice'){
+                        $mockHeadingMatchSubQuesHeadingTrue = MockHeadingMatch::where('mock_question_id',  $question_id)->get();
+                        $mockTrueOfNiceAns = MockTrueOfNice::where('mock_question_id',  $question_id)->get();
+
+                        $subQ = [
+                                'q_head_t'=>  $mockHeadingMatchSubQuesHeadingTrue, 
+                                't_ans'=>$mockTrueOfNiceAns
+                            ];
                     }
                     
                     $mockSubmissionFillBlankDB = MockSubmission::where('mock_submission_log_id', $mockSubmissionLogId)->where('question_type', 'fill-blank')->where('mock_question_id', $question_id)->get();
@@ -677,6 +685,7 @@ class MockModuleController extends Controller
                     $mockSubmissionDropDownDB = MockSubmission::where('mock_submission_log_id', $mockSubmissionLogId)->where('question_type', 'drop-down')->where('mock_question_id', $question_id)->get();
                     $mockSubmissionHeadingMatchingDB = MockSubmission::where('mock_submission_log_id', $mockSubmissionLogId)->where('question_type', 'heading-matching')->where('mock_question_id', $question_id)->get();
                     $mockSubmissionSingleCheckDB = MockSubmission::where('mock_submission_log_id', $mockSubmissionLogId)->where('question_type', 'single-check')->where('mock_question_id', $question_id)->get(); 
+                    $mockSubmissionTrueOfNiceDB = MockSubmission::where('mock_submission_log_id', $mockSubmissionLogId)->where('question_type', 'true-of-nice')->where('mock_question_id', $question_id)->get(); 
                     $data[] = array(
                         'question_type'=> $question_type,
                         'question_instruction'=> $question_instruction,
@@ -687,10 +696,12 @@ class MockModuleController extends Controller
                         'submitted_drop_down'=> $mockSubmissionDropDownDB,
                         'submitted_heading_match'=> $mockSubmissionHeadingMatchingDB,
                         'submitted_single_check'=> $mockSubmissionSingleCheckDB,
+                        'submitted_true_of_nice'=> $mockSubmissionTrueOfNiceDB,
                         'sub-q' => $subQ,
                         
                     );
                 }
+                
                 if(strtolower($mockModule->name) == 'reading'){
                     $mockPassage = MockPassage::where('mock_exercise_id', $mockExerciseId)->first();
                     return view('frontend.mock.reading.reading-module-review', compact('mockPassage','data', 'mockExerciseId', 'mock_id', 'module_id', 'segment_id', 'countExercise'));

@@ -89,7 +89,8 @@
                                                                         $show_ans = '';
                                                                         if(strpos($options[$key-1], '/')){
                                                                             $explode_correct_ans = explode('/', $options[$key-1]);
-                                                                            if(in_array($submitted_ans[$key-1], $explode_correct_ans)){
+                                                                            $convert_arr = array_map('strtolower', $explode_correct_ans);
+                                                                            if(in_array(strtolower($submitted_ans[$key-1]), $convert_arr)){
                                                                                 $show_ans = $submitted_ans[$key-1] . '<i class="fa-solid fa-check right_radio mx-2"></i>';
                                                                             }else{
                                                                             $show_ans = $options[$key-1] . '<i class="fa-solid fa-check right_radio mx-2"></i>';
@@ -352,8 +353,53 @@
                                             @endforeach
                                         @endif
                                     </div>
-                                {{-- @else
-                                    <p>nothing</p> --}}
+                                @elseif($items['question_type'] == 'true-of-nice')
+                                   {{-- True of Nice section start --}}
+                                    <div class="question_set_2">
+                                        <p>{!!$items['question_instruction']!!}</p>
+                                        @if($items['sub-q'] != NULL)
+                                            <div class="heading_matching_box">
+                                                <p class="main-text fw-bold mx-4">List of Heading</p>
+                                                <ul>
+                                                    
+                                                    @foreach ($items['sub-q']['q_head_t'] as $key_heading=>$qhead)    
+                                                        <li>{{$qhead->heading_title}}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            <div class="fill_blanks main-text mt-5">
+                                                @foreach ($items['sub-q']['t_ans'] as $key=>$qq)
+                                                    @php
+                                                        
+                                                        //$answer = $items['sub-q']['q_head'][$loop->index]->heading_title;
+                                                        $t_answer = json_decode($qq->blank_answer);
+                                                        $submitted_ans_t = json_decode($items['submitted_true_of_nice'][$loop->index]['submitted_ans']);
+                                                        $correct_t = ' ';
+                                                        foreach ($submitted_ans_t as $user_ans) {
+                                                            if(in_array($user_ans, $t_answer)){
+                                                                    $correct_t .= '<span style="border-bottom: 2px solid #00c437; color:#00c437">'.$user_ans. '<i class="fa-solid fa-check right_radio mx-1">'.'</i>'.'</span>'."<br>";
+                                                            }else{
+                                                                $correct_t .= '<span style="border-bottom: 2px solid red; color:red">'.$user_ans. '<i class="fa-solid fa-xmark wrong_radio mx-1">'.'</i>'.'</span>'."<br>";
+                                                            }
+                                                        }
+                                    
+                                                    @endphp
+                                                    <p>
+                                                       {!!$correct_t!!} 
+                                                        {{-- {{$qq->text}}
+                                                        @if($answer == $submitted_ans)
+                                                            <span style="border-bottom: 2px solid #00c437; color:#00c437">{{$submitted_ans}} <i class="fa-solid fa-check right_radio mx-1"></i></span>
+                                                        @else
+                                                            <span style="border-bottom: 2px solid red; color:red">{{$submitted_ans}} <i class="fa-solid fa-xmark wrong_radio mx-1"></i></span>
+                                                            <span style="border-bottom: 2px solid #00c437; color:#00c437">{{$answer}} <i class="fa-solid fa-check right_radio mx-1"></i></span>
+                                                        @endif --}}
+                                                        {{-- <input type="text" value="{{$submitted_ans}}"> --}}
+                                                    </p>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+                                   {{-- True of Nice section end --}}
                                 @endif
                             @endforeach
                             <div class="submit_button">

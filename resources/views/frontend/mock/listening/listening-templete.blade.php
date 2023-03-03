@@ -9,7 +9,7 @@
       <div class="container">
          <!-- breadcrumb section start -->
          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12">
                 <div class="breadcrumb">
                     <ul>
                         <li>
@@ -21,7 +21,34 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <a href="#" class="listening_warning" data-bs-toggle="modal" data-bs-target="#listeningWarning"><i class="fa-solid fa-circle-exclamation"></i> Read it</a>
+            </div>
         </div>
+        <!-- Listening Warning Modal -->
+            <div class="modal fade" id="listeningWarning" tabindex="-1" aria-labelledby="listeningWarningLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 fw-bolder" id="listeningWarningLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="fs-5">
+                                <li>Read the questions and instructions properly.</li><br>
+                                <li>After completing section 1 Click the next button to go to the next section. The next Section will not start automatically. As soon as you complete your section click next.</li><br>
+                                <li>When you click the next button questions will be submitted. You can not change your answer again.</li><br>
+                                <li>Do not give extra space, comma before or after your answers.</li><br>
+                                <li>Careful about uppercase and lowercase. In the IELTS exam answer is sensitive. So write your answer proper way.</li>
+                            </ul>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- breadcrumb section end -->
           <!-- content wrapper start -->
         <div class="row">
@@ -61,7 +88,11 @@
                                 <p class="main-text">You should spend about 5 minutes on <strong>Questions 31 - 40,</strong>which are based on Listening track.</p>
                             @endif
                         </div>
-                        <p class="audio_playing">Playing... <i class="fa-solid fa-headphones"></i></p>
+                        <div>
+                            
+                            <p class="audio_playing">Playing... <i class="fa-solid fa-headphones"></i></p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="content" onload="myFunction()">

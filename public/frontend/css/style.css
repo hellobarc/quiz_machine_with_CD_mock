@@ -968,12 +968,15 @@ table td {
     cursor: pointer;
   }
   
-  /* .volume-toggler::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
-  } */
+  .listening_warning{
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: red;
+    font-weight: 700;
+  }
+  .listening_warning:hover{
+    color: #000;
+  }
 /* mock test  css end */
 /* responsive css start */
 @media only screen and (max-width:500px) {
