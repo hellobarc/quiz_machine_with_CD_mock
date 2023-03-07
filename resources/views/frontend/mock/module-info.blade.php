@@ -68,9 +68,11 @@
                                     @foreach ($submittedModule as $items)
                                         @if($rows->id == $items->module_id)
                                             <a href="{{route('frontend.mock.module.result', ['mock_id'=>$mock->id, 'module_id'=>$rows->id])}}" class="btn btn-success btn-sm fw-bold">View Result</a>
+                                           
                                         @elseif($rows->id !== $items->module_id)
                                             <a href="{{route('frontend.mock.module.instruction', ['mock_id'=>$mock->id, 'module_id'=>$rows->id])}}" class="btn btn-warning btn-sm fw-bold">Start Now</a>
                                         @endif
+                                        
                                     @endforeach
                                 @elseif($count_submit_data == 0)
                                     <a href="{{route('frontend.mock.module.instruction', ['mock_id'=>$mock->id, 'module_id'=>$rows->id])}}" class="btn btn-warning btn-sm fw-bold">Start Now</a>
